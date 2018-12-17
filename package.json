@@ -6,15 +6,18 @@
     "faker": "^4.1.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-player": "^1.7.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "react-simple-repeater": "^0.1.10",
     "react-typed": "^1.1.0",
     "react-typist": "^2.0.4",
     "react-typist-cycle": "^0.1.2",
+    "redux": "^4.0.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.84.0",
-    "typed.js": "^2.0.9"
+    "typed.js": "^2.0.9",
+    "video-react": "^0.13.1"
   },
   "scripts": {
     "start": "react-scripts start",

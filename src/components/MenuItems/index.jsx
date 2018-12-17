@@ -29,19 +29,14 @@ class MenuList extends Component {
     })
   }
   render() {
-    let taglineStyle={
-      color:'#FFFFFF'
-    }
+
     return (
       <React.Fragment>
             <Menu
-              fixed='top'
-              inverted={true}
-              pointing={true}
-              secondary={true}
-              size='large'
+              inverted
+              color={"black"}
             >
-            <Menu.Item style={taglineStyle}>danielle</Menu.Item>
+            <Menu.Item>danielle</Menu.Item>
               <Container>
                 {
                   this.state.menuItems.map((menuItem)=>{
