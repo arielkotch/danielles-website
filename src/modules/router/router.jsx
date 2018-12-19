@@ -23,11 +23,11 @@ class AppRouter extends Component {
         </div>
         <div>
           <Route path="/" exact component={Home} />
-          <Route path="/Home/" exact component={Home} />
-          <Route path="/Acting/" exact component={Acting} />
-          <Route path="/Dance/" exact component={Dance} />
-          <Route path="/Reel/" exact component={Reel} />
-          <Route path="/Contact/" exact component={Contact}/>
+          <Route path="/Home/"  component={Home} />
+          <Route path="/Acting/"  component={Acting} />
+          <Route path="/Dance/"  component={Dance} />
+          <Route path="/Reel/"  component={Reel} />
+          <Route path="/Contact/" component={Contact}/>
         </div>
       </div>
       </Router>);

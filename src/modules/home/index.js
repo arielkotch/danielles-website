@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import 'semantic-ui-css/semantic.min.css'
 import {Segment,Header,Image} from 'semantic-ui-react'
 import MenuList from '../../components/MenuItems/index';
-import TypeList from '../../components/Typist/index'
+import Typist from '../../components/Typist/index'
 class Home extends Component {
-
+  constructor(props){
+    super(props);
+    this.state={
+        sentences:['Actor.','Dancer.','Singer.']
+    };
+  }
   render() {
     let segmentStyle={
       minHeight: 700,
@@ -16,6 +21,10 @@ class Home extends Component {
       fontWeight: 'normal',
       marginBottom: 0,
       paddingTop:  '4em',
+    };
+    let typist={
+      color:'#FFFFFF',
+      fontSize:'28px'
     };
     return (
       <React.Fragment>
@@ -29,7 +38,12 @@ class Home extends Component {
             content='Danielle Kotch'
             style={headerStyle}>
           </Header>
-          <TypeList/>
+          <Typist
+            sentences={this.state.sentences}
+            backSpeed={40}
+            typeSpeed={50}
+            style={typist}
+            />
         </Segment>
       </React.Fragment>
     );
