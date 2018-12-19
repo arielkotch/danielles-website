@@ -1,43 +1,28 @@
 import React, { Component } from 'react';
 import {Segment,Header,Image,Grid,Card,Item,Button,paragraph,Label,Icon} from 'semantic-ui-react'
-
+import {styles} from './styles.js'
 function Movie (props) {
 
-    let movieStyle={
-      textAlign:'left'
-    };
-    let movieTitleStyle={
-      fontSize:'21px'
-    };
-    let metaStyle={
-      fontSize:'15px',
-    };
-    let descriptionStyle={
-      fontSize:'16px',
-      lineHeight:'1.5em'
-    };
-    let labelStyle={
-      fontSize:'13px'
-    };
+
     return (
       <Item.Group divided>
-        <Item style={movieStyle}>
+        <Item style={styles.movie}>
           <Item.Image src={props.image} />
           <Item.Content>
-            <Item.Header as='a' style={movieTitleStyle}>
+            <Item.Header as='a' style={styles.title}>
               {props.header}
             </Item.Header>
             <Item.Meta>
-              <span className='cinema' style={metaStyle}>
+              <span className='cinema' style={styles.meta}>
                 {props.subHeader}
               </span>
             </Item.Meta>
-            <Item.Description style={descriptionStyle}>
+            <Item.Description style={styles.description}>
               {props.movieDescription}
             </Item.Description>
             <Item.Extra>
-              <Label style={labelStyle}  as="a">{props.label}</Label>
-              <Label style={labelStyle} as="a"
+              <Label style={styles.label}  as="a">{props.label}</Label>
+              <Label style={styles.label} as="a"
                 icon='globe'
                 content='Additional Languages' />
             </Item.Extra>
@@ -45,7 +30,7 @@ function Movie (props) {
         </Item>
       </Item.Group>
     );
-  
+
 
 }
 

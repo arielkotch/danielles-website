@@ -6,7 +6,7 @@ import {getMovies} from '../data/index'
 import imagePlaceholder from './regular.png'
 import Typist from '../../components/Typist/index'
 import CardView from '../../components/CardView/index'
-import styles from './index.less';
+import  './styles.js';
 
 class Acting extends Component {
   constructor(props){
@@ -26,20 +26,8 @@ class Acting extends Component {
     })
   }
   render() {
-    let headerStyle={
-      fontSize:'4em',
-      color:'#FFFFFF',
-      fontWeight: 'normal',
-      marginBottom: 0,
-      paddingTop:  '4em',
-    };
-    let rowStyle={
-      marginTop:'0px',
-      minHeight:200,
-    };
-
     return (
-      <React.Fragment style={styles}>
+      <React.Fragment>
         <Grid>
           <div class="row">
             <Image fluid src={imagePlaceholder}/>
@@ -48,7 +36,6 @@ class Acting extends Component {
         <Grid>
           <div class="row sixteen wide">
             <div class="ui four wide column">
-
             </div>
             <div class="ui eight wide column">
                 <div class="ui huge header center aligned">Acting</div>
@@ -87,7 +74,8 @@ class Acting extends Component {
                           meta={"Thriller/Horror"}
                           description={"Danielle played “Lawngirl” in Sinister where she had a late night run in with Ellison Oswalt played by Ethan Hawke."}
                           label="IMDB"
-                          />      </Grid.Column>
+                          />
+                      </Grid.Column>
                     </Grid.Row>
                   </Grid>
               );

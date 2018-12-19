@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Typed from 'react-typed';
 
 function Typist(props) {
-
-
     return (
       <Typed
         strings={props.sentences}
@@ -14,6 +12,6 @@ function Typist(props) {
         >
       </Typed>
     );
-  
+
 }
 export default Typist;
