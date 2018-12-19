@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "css-loader": "^2.0.1",
     "faker": "^4.1.0",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-player": "^1.7.1",
@@ -16,6 +19,7 @@
     "redux": "^4.0.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.84.0",
+    "style-loader": "^0.23.1",
     "typed.js": "^2.0.9",
     "video-react": "^0.13.1"
   },
