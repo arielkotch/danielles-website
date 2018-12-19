@@ -4,6 +4,7 @@ import {Segment,Header,Image,Grid,Card,Item,Button,paragraph,Label,Icon,Containe
 import Movie from '../../components/Movie/index'
 import {getMovies} from '../data/index'
 import imagePlaceholder from './regular.png'
+import styles from './index.less'
 
 import ReactPlayer from 'react-player'
 
@@ -16,11 +17,7 @@ class Acting extends Component {
   }
   render() {
     let description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur tempus mi, sed lacinia est volutpat vitae. Quisque nec tempus lacus. Sed ante diam, lacinia sit amet sem sit amet, vestibulum aliquam quam. Morbi tincidunt volutpat interdum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut tempus arcu sed risus interdum, ut pharetra augue facilisis. Suspendisse tempor velit quis velit pretium, a dignissim quam placerat. Cras tincidunt molestie magna, a facilisis metus finibus a. Nulla convallis vulputate ultrices. Donec at orci quam.";
-    let containerStyle={
-      minHeight: 700,
-      backgroundColor:'#DDDDDD',
-      paddingTop:'5em'
-    };
+
     let headerStyle={
       fontSize:'4em',
       color:'#FFFFFF',
@@ -55,7 +52,7 @@ class Acting extends Component {
             </div>
           </div>
         </Grid>
-        <Container style={containerStyle}>
+        <Container className="container">
           {
             this.state.movies.map(function(item,index){
               return (
