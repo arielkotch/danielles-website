@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Card,Image,Icon,Label,Button,Header} from 'semantic-ui-react'
 import ReactPlayer from 'react-player'
-import Modal from '../Modal/index'
+import Modal from '../MovieModal/index'
 class CardView extends Component {
   //image
   //title
@@ -28,7 +28,7 @@ class CardView extends Component {
       <Card
 
         >
-      <Image onClick={this.handleOnClick} src={this.props.image} />
+      <Image wrapped onClick={this.handleOnClick} src={this.props.image} />
       <Card.Content>
         <Card.Header>{this.props.title}</Card.Header>
         <Card.Meta>
@@ -42,6 +42,9 @@ class CardView extends Component {
         </a>
       </Card.Content>
     <Modal
+      description={this.props.description}
+      title={this.props.title}
+      movieUrl={this.props.movieUrl}
       isOpen={this.state.isModalOpen}
       onCloseModal={this.onCloseModal}
       />

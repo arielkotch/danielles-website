@@ -11,7 +11,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 class AppRouter extends Component {
   constructor(){
     super();
-
   }
 
   render(){

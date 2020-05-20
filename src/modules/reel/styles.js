@@ -1,20 +1,19 @@
-var backgroundColor='#000000';
-var primaryHeaderColor='#FFFFFF';
+import {colors} from '../../colors'
 
 export const styles={
     segment:{
       minHeight: 700,
-      backgroundColor:backgroundColor
+      backgroundColor:colors.backgroundColor
     },
     header:{
       fontSize:'4em',
-      color:primaryHeaderColor,
+      color:colors.primaryHeaderColor,
       fontWeight: 'normal',
       marginBottom: 0,
       paddingTop:  '4em',
     },
     typist:{
-      color:primaryHeaderColor,
+      color:colors.primaryHeaderColor,
       fontSize:'28px'
     }
 };

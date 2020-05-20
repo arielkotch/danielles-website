@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import 'semantic-ui-css/semantic.min.css'
 import {Segment,Header,Image,Grid,Card,Item,Button,paragraph,Label,Icon,Container} from 'semantic-ui-react'
 import Movie from '../../components/Movie/index'
 import {getMovies} from '../data/index'
 import imagePlaceholder from './regular.png'
 import Typist from '../../components/Typist/index'
 import CardView from '../../components/CardView/index'
-import  './styles.js';
+
+import {styles} from './styles.js'
 
 class Acting extends Component {
   constructor(props){
@@ -46,42 +46,42 @@ class Acting extends Component {
           </div>
         </Grid>
         <Container className="container">
+        
+        <Card.Group
+        stackable 
+        centered
+        itemsPerRow='3'>
+
           {
-            this.state.movies.map(function(item,index){
+            this.state.movies.map(function({
+              title,
+              meta,
+              description,
+              label,
+              image,
+              movieUrl
+            },index){
               return (
-                <Grid columns={3} divided>
-                    <Grid.Row>
-                      <Grid.Column>
-                        <CardView
-                          image={"https://upload.wikimedia.org/wikipedia/en/f/f8/SinisterMoviePoster2012.jpg"}
-                          title={"Sinister"}
-                          meta={"Thriller/Horror"}
-                          description={"Danielle played “Lawngirl” in Sinister where she had a late night run in with Ellison Oswalt played by Ethan Hawke."}
-                          label="IMDB"
-                          />      </Grid.Column>
-                      <Grid.Column>
-                        <CardView
-                          image={"https://upload.wikimedia.org/wikipedia/en/f/f8/SinisterMoviePoster2012.jpg"}
-                          title={"Sinister"}
-                          meta={"Thriller/Horror"}
-                          description={"Danielle played “Lawngirl” in Sinister where she had a late night run in with Ellison Oswalt played by Ethan Hawke."}
-                          label="IMDB"
-                          />      </Grid.Column>
-                      <Grid.Column>
-                        <CardView
-                          image={"https://upload.wikimedia.org/wikipedia/en/f/f8/SinisterMoviePoster2012.jpg"}
-                          title={"Sinister"}
-                          meta={"Thriller/Horror"}
-                          description={"Danielle played “Lawngirl” in Sinister where she had a late night run in with Ellison Oswalt played by Ethan Hawke."}
-                          label="IMDB"
-                          />
-                      </Grid.Column>
-                    </Grid.Row>
-                  </Grid>
+                <React.Fragment>
+                <Grid.Column>
+                  <CardView
+                    image={image}
+                    title={title}
+                    meta={meta}
+                    movieUrl={movieUrl}
+                    description={description}
+                    label={label}
+                    />  
+                   <div style={{padding:'10px'}}/>
+                </Grid.Column>
+                  <div style={{padding:'10px'}}/>
+                </React.Fragment>
               );
             })
           }
-        </Container>
+          
+         </Card.Group>
+      </Container>
       </React.Fragment>
     );
   }

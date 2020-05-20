@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AppRouter from './modules/router/router';
 
+
 ReactDOM.render(<AppRouter/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

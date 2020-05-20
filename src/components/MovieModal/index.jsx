@@ -16,15 +16,13 @@ class ModalSUI extends Component {
            open={this.props.isOpen}
            onClose={this.props.onCloseModal}
          >
-          <Modal.Header>Select a Photo</Modal.Header>
-          <Modal.Content image>
-              <ReactPlayer playsinline  url={"https://www.youtube.com/watch?v=_5Ys9NZQSzA"} width={'320px'} height={'220px'} />
-            <Modal.Description>
-              <Header>Default Profile Image</Header>
-              <p>We've found the following gravatar image associated with your e-mail address.</p>
-              <p>Is it okay to use this photo?</p>
-            </Modal.Description>
-          </Modal.Content>
+          <ReactPlayer 
+              playsinline 
+              playing  
+              url={this.props.movieUrl} 
+              width={'100%'} 
+              height={'35em'} 
+            />
         </Modal>
       </React.Fragment>
     );

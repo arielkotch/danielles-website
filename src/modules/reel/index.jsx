@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import 'semantic-ui-css/semantic.min.css'
 import {Segment,Header,Image} from 'semantic-ui-react'
+import ReactPlayer from 'react-player'
+
 import {styles} from './styles.js'
 
 class Reel extends Component {
@@ -14,11 +15,11 @@ class Reel extends Component {
           style={styles.segment}
           vertical
           >
-          <Header
-            as='h1'
-            content='Reel Page'
-            style={styles.header}>
-          </Header>
+          <ReactPlayer 
+            width="100%"
+            url='https://www.youtube.com/watch?v=ysz5S6PUM-U' 
+            playing 
+          />
         </Segment>
       </React.Fragment>
     );
