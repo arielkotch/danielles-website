@@ -1,9 +1,0 @@
-{
-    "extends": "react-app",
-    "plugins": ["prettier"],
-    "editor.formatOnSave": true,
-
-    "rules": {
-      "prettier/prettier": "error"
-    }
-  }
