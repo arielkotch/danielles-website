@@ -5,9 +5,6 @@ export const styles = {
         minHeight: 700,
         backgroundColor: colors.backgroundColor,
     },
-    reactDancePlayer: {
-        'border-radius': '25px',
-    },
     header: {
         fontSize: '4em',
         color: colors.primaryHeaderColor,

@@ -1,154 +1,16 @@
 import React, { Component } from 'react'
-import { Segment, Container, Grid, Header } from 'semantic-ui-react'
+import Gallery from '/Users/arielkotch/Desktop/danielles-website/src/components/Gallery'
+import { Segment, Container, Grid, Header, Divider } from 'semantic-ui-react'
 import { styles } from './styles.js'
-import Gallery from 'react-grid-gallery'
-import Quote from '../../components/Quote/index'
-
+import VIDEOS from './videos'
+import PHOTOS from './images'
 import ReactPlayer from 'react-player'
-const IMAGES = [
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6204.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6204.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6193.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6193.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6191.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6191.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6189.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6189.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6155.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6155.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6149.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6149.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6144.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6144.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6050.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6050.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6014.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6014.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6009.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6009.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6001.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q6001.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5998.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5998.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5983.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5983.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5976.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5976.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5973.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5973.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5968.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5968.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5960.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5960.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5935.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5935.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5933.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5933.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-    {
-        src: 'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5968.jpg',
-        thumbnail:
-            'http://daniellekotch.com/wp-content/uploads/2016/05/DD6Q5968.jpg',
-
-        caption: 'After Rain (Jeshu John - designerspics.com)',
-    },
-]
 
 class Dance extends Component {
+    state = {
+        showPictures: false,
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -163,39 +25,26 @@ class Dance extends Component {
                             height={'40em'}
                         />
                     </Container>
-                    <div class="ui huge header center aligned">
-                        PERFORMANCES
-                    </div>
-                    <Quote
-                        quote="Practice like you have never won before, Perform like you’ve never lost before."
-                        source="Bernard F. Asuncion"
-                    />
+                    <Divider />
                     <Container>
-                        <Header
-                            style={{
-                                'text-decoration': 'underline',
-                            }}
-                        >
-                            Preformances
-                        </Header>
+                        <Header textAlign="left">PREFORMANCES</Header>
                         <Grid columns={3}>
-                            {Array.from({ length: 6 }).map(() => (
+                            {VIDEOS.map(({ src, description, title }) => (
                                 <Grid.Column>
-                                    <Segment>
-                                        <ReactPlayer
-                                            playsinline
-                                            centered
-                                            styles={styles.reactDancePlayer}
-                                            url="https://www.youtube.com/watch?v=rFMO7pUU6uE"
-                                            width={'100%'}
-                                            height={'100%'}
-                                        />
-                                    </Segment>
+                                    <ReactPlayer
+                                        playsinline
+                                        centered
+                                        url={src}
+                                        width={'100%'}
+                                        height={'100%'}
+                                    />
                                 </Grid.Column>
                             ))}
                         </Grid>
+
+                        <Header textAlign="left">PHOTOS</Header>
+                        <Gallery photos={PHOTOS} />
                     </Container>
-                    <Gallery images={IMAGES} />,
                 </Segment>
             </React.Fragment>
         )
