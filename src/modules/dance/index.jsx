@@ -1,53 +1,57 @@
-import React, { Component } from 'react'
-import Gallery from '/Users/arielkotch/Desktop/danielles-website/src/components/Gallery'
-import { Segment, Container, Grid, Header, Divider } from 'semantic-ui-react'
-import { styles } from './styles.js'
-import VIDEOS from './videos'
-import PHOTOS from './images'
-import ReactPlayer from 'react-player'
+/* eslint-disable import/no-unresolved */
+/* eslint-disable react/prefer-stateless-function */
+import React, { Component } from 'react';
+import Gallery from 'molecules/Gallery/index';
+import {
+  Segment, Container, Grid, Header, Divider,
+} from 'semantic-ui-react';
+import ReactPlayer from 'react-player';
+import { styles } from './styles';
+import VIDEOS from './videos';
+import PHOTOS from './images';
 
 class Dance extends Component {
-    state = {
-        showPictures: false,
-    }
+  render() {
+    return (
+      <Segment textAlign="center" style={styles.segment} vertical>
+        <Container fluid style={styles.movie}>
+          <ReactPlayer
+            playsinline
+            onReady={() => console.log('onReady')}
+            playing
+            muted
+            config={{
+              youtube: {
+                playerVars: { showinfo: 1 },
+              },
+            }}
+            url="http://daniellekotch.com/videos/dance.mov"
+            width="100%"
+            height="40em"
+          />
+        </Container>
+        <Divider />
+        <Container>
+          <Header textAlign="left">PREFORMANCES</Header>
+          <Grid columns={3}>
+            {VIDEOS.map(({ src }) => (
+              <Grid.Column>
+                <ReactPlayer
+                  playsinline
+                  centered
+                  url={src}
+                  width="100%"
+                  height="100%"
+                />
+              </Grid.Column>
+            ))}
+          </Grid>
 
-    render() {
-        return (
-            <React.Fragment>
-                <Segment textAlign="center" style={styles.segment} vertical>
-                    <Container fluid style={styles.movie}>
-                        <ReactPlayer
-                            playsinline
-                            playing
-                            muted
-                            url="http://daniellekotch.com/videos/dance.mov"
-                            width={'100%'}
-                            height={'40em'}
-                        />
-                    </Container>
-                    <Divider />
-                    <Container>
-                        <Header textAlign="left">PREFORMANCES</Header>
-                        <Grid columns={3}>
-                            {VIDEOS.map(({ src, description, title }) => (
-                                <Grid.Column>
-                                    <ReactPlayer
-                                        playsinline
-                                        centered
-                                        url={src}
-                                        width={'100%'}
-                                        height={'100%'}
-                                    />
-                                </Grid.Column>
-                            ))}
-                        </Grid>
-
-                        <Header textAlign="left">PHOTOS</Header>
-                        <Gallery photos={PHOTOS} />
-                    </Container>
-                </Segment>
-            </React.Fragment>
-        )
-    }
+          <Header textAlign="left">PHOTOS</Header>
+          <Gallery photos={PHOTOS} />
+        </Container>
+      </Segment>
+    );
+  }
 }
-export default Dance
+export default Dance;

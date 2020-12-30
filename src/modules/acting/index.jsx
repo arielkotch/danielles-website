@@ -1,84 +1,89 @@
-import React, { Component } from 'react'
-import { Grid, Card, Container } from 'semantic-ui-react'
-import { getMovies } from '../data/index'
-import CardView from '../../components/CardView/index'
-import Quote from '../../components/Quote/index'
-import ReactPlayer from 'react-player'
-import { styles } from './styles.js'
+/* eslint-disable react/no-unused-state */
+/* eslint-disable react/no-deprecated */
+/* eslint-disable react/destructuring-assignment */
+import React, { Component } from 'react';
+import { Grid, Card, Container } from 'semantic-ui-react';
+import ReactPlayer from 'react-player';
+import { isEmpty, sortBy } from 'lodash';
+import Movies from '../../molecules/Movies/index';
+import Quote from '../../atoms/Quote/index';
+import { styles } from './styles';
 
 class Acting extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            movies: [],
-            sentences: [
-                'I love acting, it’s where dreams can be realized.',
-                'Fantasy comes to life.',
-                'There are no limitations on what’s possible.',
-            ],
-        }
-    }
-    componentDidMount() {
-        this.setState({
-            movies: getMovies(),
-        })
-    }
-    render() {
-        return (
-            <React.Fragment>
-                <Container fluid style={styles.movie}>
-                    <ReactPlayer
-                        playsinline
-                        playing
-                        url="http://daniellekotch.com/videos/acting.mp4"
-                        width={'100%'}
-                        height={'40em'}
-                    />
-                </Container>
+  constructor(props) {
+    super(props);
+    this.state = {
+      imdb: [],
+      actor: {},
+    };
+  }
 
-                <Container fluid style={styles.header}>
-                    <div class="ui huge header center aligned">Acting</div>
+  componentDidMount() {
+    this.setState({
+      movies: [],
+      tvShows: [],
+      imdb: this.props.getMovies || [],
+    });
+  }
 
-                    <Quote
-                        quote="“I love acting because it’s this space where dreams can be realized, fantasy comes to life, and there are no limitations on what’s possible.”"
-                        source="Jessica Alba"
-                    />
-                </Container>
-                <Container styles={styles.cardGroup} className="container">
-                    <Card.Group centered itemsPerRow="3">
-                        {this.state.movies.map(function (
-                            {
-                                title,
-                                meta,
-                                description,
-                                label,
-                                image,
-                                movieUrl,
-                            },
-                            index
-                        ) {
-                            return (
-                                <React.Fragment>
-                                    <Grid.Column>
-                                        <CardView
-                                            image={image}
-                                            title={title}
-                                            meta={meta}
-                                            movieUrl={movieUrl}
-                                            description={description}
-                                            label={label}
-                                        />
-                                        <div style={{ padding: '10px' }} />
-                                    </Grid.Column>
-                                    <div style={{ padding: '10px' }} />
-                                </React.Fragment>
-                            )
-                        })}
-                    </Card.Group>
-                </Container>
-            </React.Fragment>
-        )
+  componentWillReceiveProps(nextProps) {
+    if (!isEmpty(nextProps.getMovies) 
+    && !isEmpty(nextProps.getTVShows) 
+    && !isEmpty(nextProps.getVideo)) {
+      this.setState({
+        imdb: [...nextProps.getMovies, ...nextProps.getTVShows,],
+      });
     }
+
+    if (nextProps.getMovies !== this.props.getMovies) {
+      // Perform some operation
+      this.setState({ imdb: nextProps.getMovies });
+    }
+    if (nextProps.getActor !== this.props.getActor) {
+      // Perform some operation
+      this.setState({ actor: nextProps.getActor });
+    }
+  }
+
+  render() {
+    const { imdb } = this.state;
+    console.log(this.props)
+    return (
+      <>
+        <Container fluid style={styles.movie}>
+          <ReactPlayer
+            playsinline
+            url="https://www.youtube.com/watch?v=fYrh71MXalk"
+            width="100%"
+            height="40em"
+          />
+        </Container>
+
+        <Container fluid style={styles.container}>
+          <div style={styles.header} className="ui huge header center aligned">Acting</div>
+
+          <Quote
+            quote="Danielle Kotch is an actress, known for Person of Interest (2011), Sinister (2012) and Lullaby (2014)."
+            source="IMDB"
+          />
+        </Container>
+        <Container styles={styles.cardGroup} className="container">
+          <Card.Group centered itemsPerRow="3">
+            {imdb.length !== 0
+                            && sortBy(imdb, ['popularity']).map((movie) => (
+                              <>
+                                <Grid.Column>
+                                  <Movies movie={movie} />
+                                  <div style={{ padding: '10px' }} />
+                                </Grid.Column>
+                                <div style={{ padding: '10px' }} />
+                              </>
+                            ))}
+          </Card.Group>
+        </Container>
+      </>
+    );
+  }
 }
 
 //                <ReactPlayer playsinline  url={item.movieUrl} width={'320px'} height={'220px'} />
@@ -102,4 +107,4 @@ class Acting extends Component {
 </Container>
 */
 
-export default Acting
+export default Acting;
