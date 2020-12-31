@@ -81,7 +81,7 @@ class Home extends Component {
             <Grid.Row>
               <Grid.Column width={8}>
                 <Header as="h3" style={{ fontSize: '2em' }}>
-                  Whats New
+                  Actor.
                 </Header>
                 <p style={{ fontSize: '1.33em' }}>
                   We can give your company superpowers to do 
@@ -109,36 +109,38 @@ class Home extends Component {
             </Grid.Row>
           </Grid>
         </Segment>
-        <Segment style={{ padding: '0em' }} vertical>
-          <Grid celled="internally" columns="equal" stackable>
-            <Grid.Row textAlign="center">
-              <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                <Header as="h3" style={{ fontSize: '2em' }}>
-                  Acting
-                </Header>
-                <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
-                <Button size="huge">Enter</Button>
-              </Grid.Column>
-              <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                <Header as="h3" style={{ fontSize: '2em' }}>
-                  Dancing 
-                </Header>
-                
-                <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
-                <Button size="huge">Enter</Button>
+      
 
+        <Segment inverted style={{ padding: '8em 0em' }} vertical>
+          <Grid container stackable verticalAlign="middle">
+            <Grid.Row>
+              <Grid.Column floated="left" width={6}>
+                <Image bordered rounded size="large" src="https://scontent.ftlv5-1.fna.fbcdn.net/v/t31.0-8/14310468_998098190335518_1340032350841767047_o.jpg?_nc_cat=103&ccb=2&_nc_sid=e3f864&_nc_ohc=n2BHL5HmXhkAX-5AlTm&_nc_ht=scontent.ftlv5-1.fna&oh=90026e76e16bf9250503a4ba11137e4b&oe=6012FB81" />
               </Grid.Column>
-              <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                <Header as="h3" style={{ fontSize: '2em' }}>
-                  Singing
+              <Grid.Column width={8}>
+                <Header as="h3" style={{ color: 'white', fontSize: '2em' }}>
+                  Dancer.
                 </Header>
                 <p style={{ fontSize: '1.33em' }}>
-                  <b>Nan</b>
-                  {' '}
-                  Chief Fun Officer Acme Toys
+                  We can give your company superpowers to do 
+                  things that they never thought possible.
+                  Let us delight your customers and
+                  empower your needs... through pure data analytics.
                 </p>
-                <Button size="huge">Enter</Button>
-
+                <Header as="h3" style={{ color: 'white', fontSize: '2em' }}>
+                  We Make Bananas That Can Dance
+                </Header>
+                <p style={{ fontSize: '1.33em' }}>
+                  Yes thats
+                  right, you thought it was the stuff of dreams, but even bananas can be
+                  bioengineered.
+                </p>
+              </Grid.Column>
+             
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column textAlign="center">
+                <Button size="huge">Check Them Out</Button>
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -232,8 +234,6 @@ class Home extends Component {
             </Grid.Row>
           </Grid>
         </Segment>
-        
-        
         <Segment inverted vertical style={{ padding: '5em 0em' }}>
           <Container textAlign="center">
             <List horizontal inverted divided link size="small">
