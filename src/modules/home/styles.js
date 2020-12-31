@@ -1,27 +1,51 @@
-import { colors } from '../../colors';
-import { theme } from '../../theme';
 
 export const styles = {
-  segment: ({
-    backgroundImage = 'https://www.prlog.org/12696813-danielle-kotch-as-jennifer.jpg',
-  }) => ({
-    minHeight: 700,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundImage: `url(${backgroundImage})`,
-    backgroundColor: colors.backgroundColor,
+  segment: () => ({
+    'margin-top': 0,
+    'padding-top': 0,
+    'padding-bottom': 0,
+    'margin-bottom': 0,
+    width: '100%',
+    height: '40em',
+    backgroundColor: 'black',
   }),
+  wrapper: {
+    position: 'relative',
+    'padding-top': '50.25%', /* Player ratio: 100 / (1280 / 720) */
+    'padding-bottom': '0'
+
+  },
+  reactPlayer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%'
+  },
+  footer: { 
+    padding: '3em 0em',
+    position: 'relative',
+    bottom: 0
+  },
+  websiteHeader: {
+    fontWeight: 'bold',
+    'font-family': 'Abel',
+    'font-size': '5em',
+    'z-index': '1',
+    color: 'white',
+    position: 'absolute', // child
+    bottom: '60%', // position where you want
+    left: '34%'
+  },
   header: {
-    fontSize: '4em',
-    color: 'black',
-    fontWeight: 'normal',
-    marginBottom: 0,
-    paddingTop: '4em',
-    ...theme.fontFamily,
-  },
-  typist: {
-    color: 'black',
-    fontSize: '28px',
-    ...theme.fontFamily,
-  },
+    fontWeight: 'bold',
+    'font-family': 'Abel',
+    'font-size': '2.4em',
+    'z-index': '1',
+    color: 'white',
+    position: 'absolute', // child
+    bottom: '56%', // position where you want
+    left: '40%'
+    
+  }
 };

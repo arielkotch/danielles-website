@@ -3,14 +3,14 @@ import Typed from 'react-typed';
 import PropTypes from 'prop-types';
 
 function Typist({
-  sentences, typeSpeed, backSpeed, style,
+  sentences, typeSpeed, backSpeed, style, loop = true,
 }) {
   return (
     <Typed
       strings={sentences}
       typeSpeed={typeSpeed}
       backSpeed={backSpeed}
-      loop
+      loop={loop}
       style={style}
     />
   );

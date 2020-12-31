@@ -16,10 +16,10 @@ const AppRouter = () => (
           menuItems={
           [
             { name: 'Home', active: true },
-            { name: 'Acting', active: false },
-            { name: 'Dance', active: false },
-            { name: 'Reel', active: false },
-            { name: 'Contact', active: false },
+            // { name: 'Acting', active: false },
+            // { name: 'Dance', active: false },
+            // { name: 'Reel', active: false },
+            // { name: 'Contact', active: false },
           ]
         }
         />
