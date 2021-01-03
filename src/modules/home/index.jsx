@@ -49,30 +49,16 @@ class Home extends Component {
             content="Singer | Actor | Dancer"
             style={styles.header}
           /> 
-          <div
-            style={styles.wrapper}
-            className="video-wrapper"
-          >
+          <Container fluid style={styles.movie}>
             <ReactPlayer
-              style={styles.reactPlayer}
               playsinline
-              loop
-              playing
-              width="100%"
-              height="100%"
               muted
-              config={{
-                vimeo: {
-                  playerOptions: { controls: false } 
-                } 
-              }}
-
+              playing
               url="https://vimeo.com/250628595"
+              width="100%"
+              height="41em"
             />
-           
-         
-          </div>
-
+          </Container>
 
         </Segment>
 

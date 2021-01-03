@@ -1,4 +1,6 @@
 
+import { colors } from '../../colors';
+
 export const styles = {
   segment: () => ({
     'margin-top': 0,
@@ -15,6 +17,13 @@ export const styles = {
     'padding-bottom': '0'
 
   },
+  container: {
+    color: colors.primaryHeaderColor,
+    fontWeight: 'normal',
+    backgroundColor: '#ebebeb',
+    'padding-top': '50.25%', /* Player ratio: 100 / (1280 / 720) */
+    marginBottom: '2em',
+  },
   reactPlayer: {
     position: 'absolute',
     top: 0,
@@ -30,22 +39,22 @@ export const styles = {
   websiteHeader: {
     fontWeight: 'bold',
     'font-family': 'Abel',
-    'font-size': '5em',
+    'font-size': '4em',
     'z-index': '1',
     color: 'white',
     position: 'absolute', // child
-    bottom: '60%', // position where you want
-    left: '34%'
+    bottom: '50%', // position where you want
+    left: '38%'
   },
   header: {
     fontWeight: 'bold',
     'font-family': 'Abel',
-    'font-size': '2.4em',
+    'font-size': '2em',
     'z-index': '1',
     color: 'white',
     position: 'absolute', // child
-    bottom: '56%', // position where you want
-    left: '40%'
+    bottom: '45%', // position where you want
+    left: '42%'
     
   }
 };
