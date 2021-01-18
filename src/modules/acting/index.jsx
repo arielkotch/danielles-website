@@ -7,7 +7,7 @@ import {
 } from 'semantic-ui-react';
 import ReactPlayer from 'react-player';
 import { isEmpty } from 'lodash';
-import Movies from '../../molecules/Movies/index';
+import Movies from '../../molecules/Movies/moviesContainer';
 // import Quote from '../../atoms/Quote/index';
 import { styles } from './styles';
 
@@ -84,7 +84,7 @@ class Acting extends Component {
    render() {
      const { media } = this.state;
   
-    
+     console.log(media,'media')
   
      return (
        <>
@@ -108,7 +108,7 @@ class Acting extends Component {
             source="IMDB"
           />
         </Container> */}
-       
+
          <Container className="container">
            <Container style={styles.buttonGroup}>
              <Button onClick={this.onHandleAllMovies}>
@@ -124,7 +124,7 @@ class Acting extends Component {
          
            <Card.Group style={styles.cardGroup} centered itemsPerRow="four">
              {!isEmpty(media) && this.resizeMediaOverview(media).map((movie) => (
-               <Movies movie={movie} />
+               <Movies movie={movie} id={movie.id} title={movie.title} overview={movie.overview} />
              ))}
            </Card.Group>
          </Container>

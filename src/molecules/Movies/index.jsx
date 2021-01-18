@@ -4,6 +4,8 @@
 /* eslint-disable camelcase */
 import React, { Component } from 'react';
 import { Card, Image, Label } from 'semantic-ui-react';
+import { isEmpty } from 'lodash';
+
 import Modal from '../../atoms/MovieModal/index';
 
 
@@ -15,7 +17,25 @@ class Movie extends Component {
     super(props);
     this.state = {
       isModalOpen: false,
+      videos: []
     };
+  }
+
+  componentDidMount() {
+    const { videos } = this.props;
+    if (!isEmpty(this.props.getVideo)) {
+      this.setState({
+        videos
+      })
+    }
+  }
+
+  // eslint-disable-next-line react/no-deprecated
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.getVideo !== this.props.getVideo) {
+      // Perform some operation
+      this.setState({ videos: nextProps.getVideo });
+    }
   }
 
     handleOnClick = () => {
@@ -42,7 +62,7 @@ class Movie extends Component {
         poster_path,
       // eslint-disable-next-line react/destructuring-assignment
       } = this.props.movie;
-
+      console.log(this.state.videos)
       return (
         <Card>
           <Image
@@ -66,9 +86,10 @@ class Movie extends Component {
             </a>
           </Card.Content>
           <Modal
-            description={overview}
+            overview={overview}
             title={title}
-            movieUrl={`${POSTER_LINK}${poster_path}`}
+            image={`${POSTER_LINK}${poster_path}`}
+            movieUrl={!isEmpty(this.state.videos) && `https://www.youtube.com/watch?v=${this.state.videos[0].key}`}
             isOpen={this.state.isModalOpen}
             onCloseModal={this.onCloseModal}
           />

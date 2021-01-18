@@ -3,12 +3,15 @@ const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql');
 const axios = require('axios');
+const fs = require('fs');
 
 const app = express();
 
 const API_KEY = 'd0bf8908709bcc882a8e69d21c40685b';
 
 const DANIELLE_ID = '1179260';
+
+
 
 const tmdb = `https://api.themoviedb.org/3/person/${DANIELLE_ID}/movie_credits?api_key=${API_KEY}&language=en-US`;
 const actorDetails = `https://api.themoviedb.org/3/person/${DANIELLE_ID}?api_key=${API_KEY}&language=en-US`;
@@ -45,6 +48,10 @@ const root = {
       `https://api.themoviedb.org/3/person/${DANIELLE_ID}/tv_credits?api_key=${API_KEY}&language=en-US`,
     );
     return cast;
+  },
+  getDancePictures: async () => {
+    const files = fs.readdirSync('/Users/arielkotch/Desktop/danielles-website/assets/dance/photos');
+    return files.map((path) => ({ path: `/Users/arielkotch/Desktop/danielles-website/assets/dance/photos/${path}` }));
   },
   getActor: async () => {
     const { data } = await axios.get(actorDetails);
@@ -93,12 +100,16 @@ const schema = buildSchema(`
   type Image {
     file_path: String!
   }
+  type Dance {
+    path:String!
+  }
   type Query {
     getMovies:[Movie!]!
     getActor:Actor
     getMovie(id:String):Movie
     getTVShows:[Show]
-    getVideo(id:Int!): [Video]
+    getVideo(id:Int!): [Video],
+    getDancePictures:[Dance]
   }
   type Actor {
     birthday:String

@@ -1,3 +1,5 @@
+/* eslint-disable import/no-absolute-path */
+/* eslint-disable global-require */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable react/no-deprecated */
@@ -101,7 +103,7 @@ class Home extends Component {
           <Grid container stackable verticalAlign="middle">
             <Grid.Row>
               <Grid.Column floated="left" width={6}>
-                <Image bordered rounded size="large" src="https://scontent.ftlv5-1.fna.fbcdn.net/v/t31.0-8/14310468_998098190335518_1340032350841767047_o.jpg?_nc_cat=103&ccb=2&_nc_sid=e3f864&_nc_ohc=n2BHL5HmXhkAX-5AlTm&_nc_ht=scontent.ftlv5-1.fna&oh=90026e76e16bf9250503a4ba11137e4b&oe=6012FB81" />
+                <Image bordered rounded size="large" src={require('/Users/arielkotch/Desktop/danielles-website/src/images/dance_1.jpg')} />
               </Grid.Column>
               <Grid.Column width={8}>
                 <Header as="h3" style={{ color: 'white', fontSize: '2em' }}>
@@ -145,22 +147,22 @@ class Home extends Component {
                   About Me
                 </Header>
                 <p style={{ fontSize: '1.33em' }}>
-                  We can give your company superpowers to do 
-                  things that they never thought possible.
-                  Let us delight your customers and
-                  empower your needs... through pure data analytics.
-                  We can give your company superpowers to do 
-                  things that they never thought possible.
-                  Let us delight your customers and
-                  empower your needs... through pure data analytics.
-                  We can give your company superpowers to do 
-                  things that they never thought possible.
-                  Let us delight your customers and
-                  empower your needs... through pure data analytics.
-                  We can give your company superpowers to do 
-                  things that they never thought possible.
-                  Let us delight your customers and
-                  empower your needs... through pure data analytics.
+                  { `At the ripe old age of five, I started my performing arts journey. From dancing with Robin
+                  Thicke on his CBS Christmas special, to performing in an off-broadway show, and dancing on a
+                  national commercial for Macy’s. I then went on to receive awards at dance competitions both
+                  nationally and internationally. Along the way, I was given scholarships and danced with
+                  choreographers such as Travis Wall, Mandy Moore, Stacey Tookey, and Talia Favia.
+                  That wasn't enough for me though, after being signed up for a local theater class and booking my
+                  first audition, I fell in love with acting, which led me to a tv, film, and voiceover career. It all
+                  started with an interview with Murray on Sesame Street, which led me to movies such as
+                  Sinister, and Phoebe in Wonderland, to guest-starring in tv shows such as Person of Interest and
+                  Made in Jersey. However, I didn't stop there because I had to become a triple threat, which led
+                  me to find a passion for singing.
+                  My adrenaline junky side reared its head in my free time, which led me to travel the world. This
+                  included the opportunity to bunjy jump in New Zealand, and snowboard in Switzerland, giving
+                  me the ability to experience and connect with nature's beauty and always be on the lookout for
+                  the next big adventure!
+                  Thank you for visiting my site!`}
                 </p>
 
               </Grid.Column>

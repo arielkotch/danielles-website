@@ -2,8 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from '../home/homeContainer';
 import Acting from '../acting/actingContainer';
-import Dance from '../dance/index';
+import Dance from '../dance/danceContainer';
 import Reel from '../reel/index';
+import Movie from '../movie/index';
 import Contact from '../contact/index';
 import MenuBar from '../../molecules/MenuBar/index';
 
@@ -20,6 +21,7 @@ const AppRouter = () => (
             // { name: 'Dance', active: false },
             // { name: 'Reel', active: false },
             // { name: 'Contact', active: false },
+            // { name: 'Movie', active: false }
           ]
         }
         />
@@ -31,6 +33,8 @@ const AppRouter = () => (
         <Route path="/Dance/" component={Dance} />
         <Route path="/Reel/" component={Reel} />
         <Route path="/Contact/" component={Contact} />
+        <Route path="/Movie/" component={Movie} />
+
       </div>
     </div>
   </Router>

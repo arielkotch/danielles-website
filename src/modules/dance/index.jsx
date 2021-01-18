@@ -1,20 +1,46 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/no-unused-state */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import Gallery from 'molecules/Gallery/index';
+import ResponsiveGallery from 'react-responsive-gallery';
 import {
   Segment, Container, Grid, Header, Divider,
 } from 'semantic-ui-react';
 import ReactPlayer from 'react-player';
 import { styles } from './styles';
 import VIDEOS from './videos';
-import PHOTOS from './images';
 
 class Dance extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pictures: []
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      pictures: this.props.getDancePictures || [],
+    });
+  }
+
+  // eslint-disable-next-line react/no-deprecated
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.getDancePictures !== this.props.getDancePictures) {
+      // Perform some operation
+      this.setState({ pictures: nextProps.getDancePictures });
+    }
+  }
+
   render() {
+    console.log(this.state.pictures)
     return (
       <Segment textAlign="center" style={styles.segment} vertical>
         <Container fluid style={styles.movie}>
+         
+          {' '}
           <ReactPlayer
             playsinline
             onReady={() => console.log('onReady')}
@@ -25,8 +51,7 @@ class Dance extends Component {
                 playerVars: { showinfo: 1 },
               },
             }}
-            url="http://daniellekotch.com/videos/dance.mov"
-            width="100%"
+            url="htt00%"
             height="40em"
           />
         </Container>
@@ -48,7 +73,15 @@ class Dance extends Component {
           </Grid>
 
           <Header textAlign="left">PHOTOS</Header>
-          <Gallery photos={PHOTOS} />
+         
+          <ResponsiveGallery images={this.state.pictures.map(({ path }) => ({
+            src: '/Users/arielkotch/Desktop/danielles-website/assets/dance/photos/thumbnail_IMG_1045.jpg',
+          
+          }))}
+          />
+          
+
+         
         </Container>
       </Segment>
     );

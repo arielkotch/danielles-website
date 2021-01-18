@@ -3,6 +3,7 @@ import { gql } from 'apollo-boost';
 export const GET_MOVIES = gql`
     query {
         getMovies {
+            id
             character
             release_date
             vote_count
@@ -27,6 +28,14 @@ export const GET_TV_SHOWS = gql`
     }
 `;
 
+export const GET_DANCE_PICTURES = gql`
+    query {
+        getDancePictures {
+            path
+        }
+    }
+`;
+
 export const GET_ACTOR = gql`
     query {
         getActor {
@@ -45,13 +54,14 @@ export const GET_ACTOR = gql`
 `;
 
 export const GET_VIDEOS = gql `
-query {
+query getVideos($id:Int!) {
     getVideo(
     id:$id
     ){
         id
         site
         size
+        key
     }
   }`
 
