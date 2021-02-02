@@ -44,6 +44,14 @@ const root = {
       url: AWS_PREFIX + Key
     }))
   },
+  getActingPictures: async () => {
+    const data = await getAWSObjects({ key: 'daniellekotch/acting/' })
+    return data.Contents.filter(({ Size }) => Size > 0).map(({ LastModified,Key }) => ({
+      lastModified: LastModified,
+      key: Key,
+      url: AWS_PREFIX + Key
+    }))
+  },
   getDanceVideos: async () => {
     const data = await getAWSObjects({ key: 'daniellekotch/dance/videos/' })
     return data.Contents.filter(({ Size }) => Size > 0).map(({ LastModified,Key }) => ({
@@ -138,6 +146,7 @@ const schema = buildSchema(`
     getMovie(id:String):Movie
     getTVShows:[Show]
     getDancePictures:[Picture]
+    getActingPictures:[Picture]
     getDanceVideos:[Video]
   }
   type Actor {

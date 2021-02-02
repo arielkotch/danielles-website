@@ -1,6 +1,7 @@
 import { graphql } from 'react-apollo';
 import { 
-  GET_MOVIES, GET_ACTOR, GET_TV_SHOWS, GET_VIDEOS,GET_DANCE_PICTURES,GET_DANCE_VIDEOS
+  GET_MOVIES, GET_ACTOR, GET_TV_SHOWS, GET_VIDEOS,GET_DANCE_PICTURES,GET_DANCE_VIDEOS, 
+  GET_ACTING_PICTURES
 } from './api/queries';
 
 export const movies = graphql(GET_MOVIES, {
@@ -24,6 +25,11 @@ export const dance = graphql(GET_DANCE_PICTURES, {
 });
 
 export const danceVideos = graphql(GET_DANCE_VIDEOS, {
+  options: () => ({}),
+  props: ({ data }) => data,
+});
+
+export const actingPictures = graphql(GET_ACTING_PICTURES, {
   options: () => ({}),
   props: ({ data }) => data,
 });

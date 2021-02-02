@@ -63,35 +63,30 @@ class Dance extends Component {
         </Container>
         <Divider />
         <Container>
-          <Header textAlign="left">PREFORMANCES</Header>
+          <Header style={{ fontSize: '3em', marginTop: '1em', marginBottom: '1em' }} textAlign="left">Performances.</Header>
           <Grid columns={3}>
             {this.state.videos.map(({ url }) => (
               <Grid.Column>
-                {(!this.state.ready) ? (<Loader active />) : (
-                  <ReactPlayer
-                    playsinline
-                    controls
-                    centered
-                    url={url}
-                    width="100%"
-                    height="100%"
-                  />
-                )}
-                
+                <ReactPlayer
+                  playsinline
+                  controls
+                  centered
+                  url={url}
+                  width="100%"
+                  height="100%"
+                />
               </Grid.Column>
             ))}
           </Grid>
 
                       
 
-          <Header textAlign="left">PHOTOS</Header>
-          {(!this.state.ready) ? (<Loader active />) : (
+          <Header style={{ fontSize: '3em', marginTop: '1em', marginBottom: '1em' }} textAlign="left">Gallery.</Header>
 
-            <ResponsiveGallery 
-              useLightBox 
-              images={this.state.pictures.map(({ url }) => ({ src: url }))}
-            />
-          )}
+          <ResponsiveGallery 
+            useLightBox 
+            images={this.state.pictures.map(({ url }) => ({ src: url }))}
+          />
 
            
 

@@ -15,8 +15,8 @@ export const styles = {
     paddingTop: '3em'
   },
   buttonGroup: {
-    paddingTop: '5%',
-    paddingLeft: '2%'
+    paddingTop: '2%',
+    paddingLeft: '0%'
   },
   movie: {
     backgroundColor: '#000000',

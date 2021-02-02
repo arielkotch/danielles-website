@@ -37,6 +37,14 @@ export const GET_DANCE_PICTURES = gql`
     }
 `;
 
+export const GET_ACTING_PICTURES = gql`
+    query {
+        getActingPictures {
+            url
+        }
+    }
+`;
+
 export const GET_DANCE_VIDEOS = gql`
     query {
         getDanceVideos {

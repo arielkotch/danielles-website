@@ -3,10 +3,11 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import {
-  Card, Container,Button
+  Card, Container,Button,Segment,Grid,Header
 } from 'semantic-ui-react';
 import ReactPlayer from 'react-player';
 import { isEmpty } from 'lodash';
+import ResponsiveGallery from 'react-responsive-gallery'
 import Movies from '../../molecules/Movies/moviesContainer';
 // import Quote from '../../atoms/Quote/index';
 import { styles } from './styles';
@@ -17,15 +18,20 @@ class Acting extends Component {
     this.state = {
       imdb: [],
       actor: {},
-      ready: false
+      pictures: [],
+      ready: false,
+      scrollPos: 0,
+      playingReel: false
     };
   }
 
   componentDidMount() {
+    window.addEventListener('scroll', this.listenToScroll)
     this.setState({
       movies: [],
       tvShows: [],
       media: this.props.getMovies || [],
+      pictures: this.props.getActingPictures || [],
     });
   }
 
@@ -46,6 +52,27 @@ class Acting extends Component {
       // Perform some operation
       this.setState({ actor: nextProps.getActor });
     }
+    if (nextProps.getActingPictures !== this.props.getActingPictures) {
+      // Perform some operation
+      this.setState({ pictures: nextProps.getActingPictures });
+    }
+  }
+  
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.listenToScroll)
+  }
+  
+  listenToScroll = () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop
+  
+    const height = document.documentElement.scrollHeight
+      - document.documentElement.clientHeight
+  
+    const scrolled = winScroll / height
+  
+    this.setState({
+      scrollPos: scrolled,
+    })
   }
 
   resizeMediaOverview = (media) => {
@@ -59,6 +86,8 @@ class Acting extends Component {
     }
     return []
   }
+
+
 
   onHandleAllMovies =() => {
     const { getMovies, getTVShows } = this.props;
@@ -85,15 +114,13 @@ class Acting extends Component {
    render() {
      const { media } = this.state;
   
-     console.log(media,'media')
-  
      return (
        <>
          <Container fluid style={{ backgroundColor: 'black', padding: 0, margin: 0 }}>
            
            <ReactPlayer
              playsinline
-             playing
+             playing={this.state.scrollPos < 0.20}
              muted
              url="https://daniellekotch.s3.us-east-2.amazonaws.com/daniellekotch/trailors/goodnight_death_trailer.mp4"
              width="100%"
@@ -114,6 +141,8 @@ class Acting extends Component {
         </Container> */}
 
          <Container className="container">
+           <Header style={{ fontSize: '4em', marginTop: '1em',marginBottom: '0em' }} textAlign="left">Movies.</Header>
+
            <Container style={styles.buttonGroup}>
              <Button onClick={this.onHandleAllMovies}>
                All
@@ -126,12 +155,48 @@ class Acting extends Component {
              </Button>
            </Container>
          
-           <Card.Group style={styles.cardGroup} centered itemsPerRow="four">
+           <Card.Group style={styles.cardGroup} itemsPerRow="four">
              {!isEmpty(media) && this.resizeMediaOverview(media).map((movie) => (
                <Movies movie={movie} id={movie.id} title={movie.title} overview={movie.overview} />
              ))}
            </Card.Group>
          </Container>
+         <Segment inverted style={{ marginBottom: '2em', marginTop: '2em', padding: '8em 0em' }} vertical>
+           <Grid container stackable verticalAlign="middle">
+             <Grid.Row>
+               <Grid.Column width={6}>
+                 <Header as="h3" style={{ color: 'white',fontSize: '4em' }}>
+                   Reel.
+                 </Header>
+                 <p style={{ fontSize: '1.33em' }}>
+                   We can give your company superpowers to do 
+                   things that they never thought possible.
+                   Let us delight your customers and
+                   empower your needs... through pure data analytics.
+                 </p>
+               </Grid.Column>
+               <Grid.Column floated="right" width={8}>
+                 <ReactPlayer
+                   playsinline
+                   muted
+                   playing={this.state.scrollPos > 0.50 && this.state.scrollPos < 0.80}
+                   controls
+                   url="https://daniellekotch.s3.us-east-2.amazonaws.com/daniellekotch/trailors/danielle_reel.mp4"
+                   width="100%"
+                 />
+               </Grid.Column>
+             </Grid.Row>
+           </Grid>
+         </Segment>
+         <Container className="container">
+
+           <Header style={{ fontSize: '4em', marginTop: '1em', marginBottom: '1em' }} textAlign="left">Gallery.</Header>
+           <ResponsiveGallery 
+             useLightBox 
+             images={this.state.pictures.map(({ url }) => ({ src: url }))}
+           />
+         </Container>
+         <div style={{ padding: '3em' }} />
        </>
      );
    }

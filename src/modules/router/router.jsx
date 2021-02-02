@@ -8,6 +8,8 @@ import Home from '../home/homeContainer';
 import Acting from '../acting/actingContainer';
 import Dance from '../dance/danceContainer';
 import Reel from '../reel/index';
+import Resume from '../resume/index';
+
 import Movie from '../movie/index';
 import Contact from '../contact/index';
 import MenuBar from '../../molecules/MenuBar/index';
@@ -25,6 +27,8 @@ const AppRouter = () => (
             { name: 'Acting', active: false },
             { name: 'Dance', active: false },
             { name: 'Reel', active: false },
+            // { name: 'Resume', active: false },
+
             // { name: 'Contact', active: false },
             // { name: 'Movie', active: false }
           ]
@@ -39,6 +43,7 @@ const AppRouter = () => (
           <Route path="/Reel/" component={Reel} />
           <Route path="/Contact/" component={Contact} />
           <Route path="/Movie/" component={Movie} />
+          <Route path="/Resume/" component={Resume} />
 
         </div>
       </div>
