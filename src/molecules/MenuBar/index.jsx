@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
-import { Container, Menu, Segment } from 'semantic-ui-react';
+import { Container, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { styles } from './styles';
 
@@ -65,7 +65,7 @@ class MenuBar extends Component {
       const { menuItems } = this.state;
       const { brand } = this.props;
       return (
-        <Segment>
+        <Container style={{ height: '7em' }}>
           <Menu secondary>
             <Container>
               <Menu.Item style={styles.brand} position="left">
@@ -85,7 +85,7 @@ class MenuBar extends Component {
             </Container>
             
           </Menu>
-        </Segment>
+        </Container>
 
       );
     }

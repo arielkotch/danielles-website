@@ -6,7 +6,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import {
-  Segment,Header,Container, List ,Button,Icon,Grid,Image
+  Segment,Header,Container ,Button,Grid,Image
 } from 'semantic-ui-react';
 import ReactPlayer from 'react-player';
 import { styles } from './styles';
@@ -51,14 +51,14 @@ class Home extends Component {
             content="Singer | Actor | Dancer"
             style={styles.header}
           /> 
-          <Container fluid style={styles.movie}>
+          <Container fluid>
             <ReactPlayer
               playsinline
               muted
               playing
-              url="https://vimeo.com/250628595"
+              url="https://daniellekotch.s3.us-east-2.amazonaws.com/daniellekotch/trailors/goodnight_death_home.mp4"
               width="100%"
-              height="41em"
+              height="40em"
             />
           </Container>
 
@@ -222,40 +222,7 @@ class Home extends Component {
             </Grid.Row>
           </Grid>
         </Segment>
-        <Segment inverted vertical style={{ padding: '5em 0em' }}>
-          <Container textAlign="center">
-            <List horizontal inverted divided link size="small">
-              <List.Item as="a" href="https://www.facebook.com/Danielle-Kotch-369760013092295">
-                <Button color="facebook">
-                  <Icon name="facebook" />
-                  {' '}
-                  Facebook
-                </Button>              
-              </List.Item>
-              <List.Item as="a" href="https://www.imdb.com/name/nm2714832/">
-                <Button color="yellow">
-                  <Icon name="camera" />
-                  {' '}
-                  IMDB
-                </Button>
-              </List.Item>
-              <List.Item as="a" href="https://www.instagram.com/danielle_kotch/">
-                <Button color="instagram">
-                  <Icon name="instagram" />
-                  {' '}
-                  Instagram
-                </Button>
-              </List.Item>
-              <List.Item as="a" href="https://www.youtube.com/channel/UC9uuSPk6JTN2tLpU4hRZlFQ">
-                <Button color="youtube">
-                  <Icon name="youtube" />
-                  {' '}
-                  YouTube
-                </Button>              
-              </List.Item>
-            </List>
-          </Container>
-        </Segment>
+       
 
         
 

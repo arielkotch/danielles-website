@@ -3,12 +3,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 import React, { Component } from 'react';
-import { Card, Image, Label } from 'semantic-ui-react';
+import {
+  Card, Image, Label,Modal 
+} from 'semantic-ui-react';
 import { isEmpty } from 'lodash';
-
-import Modal from '../../atoms/MovieModal/index';
-
-
+import ReactPlayer from 'react-player'
+import Movies from './movies'
 // TODO REMOVE THIS HARDCODED LINK
 const POSTER_LINK = 'https://image.tmdb.org/t/p/w1280';
 
@@ -16,26 +16,8 @@ class Movie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isModalOpen: false,
-      videos: []
+      isModalOpen: false
     };
-  }
-
-  componentDidMount() {
-    const { videos } = this.props;
-    if (!isEmpty(this.props.getVideo)) {
-      this.setState({
-        videos
-      })
-    }
-  }
-
-  // eslint-disable-next-line react/no-deprecated
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.getVideo !== this.props.getVideo) {
-      // Perform some operation
-      this.setState({ videos: nextProps.getVideo });
-    }
   }
 
     handleOnClick = () => {
@@ -62,7 +44,7 @@ class Movie extends Component {
         poster_path,
       // eslint-disable-next-line react/destructuring-assignment
       } = this.props.movie;
-      console.log(this.state.videos)
+     
       return (
         <Card>
           <Image
@@ -85,14 +67,19 @@ class Movie extends Component {
               </Label>
             </a>
           </Card.Content>
+
           <Modal
-            overview={overview}
-            title={title}
-            image={`${POSTER_LINK}${poster_path}`}
-            movieUrl={!isEmpty(this.state.videos) && `https://www.youtube.com/watch?v=${this.state.videos[0].key}`}
-            isOpen={this.state.isModalOpen}
-            onCloseModal={this.onCloseModal}
-          />
+            onClose={this.onCloseModal}
+            open={this.state.isModalOpen}
+            size="fullscreen"
+          >
+            <ReactPlayer
+              url={Movies.find(({ id }) => id === this.props.movie.id).path}
+              width="100%"
+              height="40em"
+            />
+     
+          </Modal>
         </Card>
       );
     }

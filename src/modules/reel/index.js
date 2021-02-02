@@ -8,10 +8,10 @@ const Reel = () => (
   <Segment textAlign="center" style={styles.segment} vertical>
     <ReactPlayer
       controls
-      loop
-      width="100%"
-      url="https://www.youtube.com/watch?v=1H2HivF4HRE&t=2s"
       playing
+      height="40em"
+      width="100%"
+      url="https://daniellekotch.s3.us-east-2.amazonaws.com/daniellekotch/trailors/danielle_reel.mp4"
     />
   </Segment>
 );

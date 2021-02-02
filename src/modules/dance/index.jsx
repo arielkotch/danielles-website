@@ -4,25 +4,32 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import ResponsiveGallery from 'react-responsive-gallery';
+import { isEmpty } from 'lodash';
 import {
-  Segment, Container, Grid, Header, Divider,
+  Segment, Container, Grid, Header, Divider,Image,Loader
 } from 'semantic-ui-react';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
+import ResponsiveGallery from 'react-responsive-gallery';
+
 import ReactPlayer from 'react-player';
 import { styles } from './styles';
-import VIDEOS from './videos';
 
 class Dance extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pictures: []
+      pictures: [],
+      videos: [],
+      ready: false
     };
   }
 
   componentDidMount() {
     this.setState({
       pictures: this.props.getDancePictures || [],
+      videos: this.props.getDanceVideos || [],
+
     });
   }
 
@@ -31,27 +38,26 @@ class Dance extends Component {
     if (nextProps.getDancePictures !== this.props.getDancePictures) {
       // Perform some operation
       this.setState({ pictures: nextProps.getDancePictures });
+      if (!isEmpty(nextProps.getDancePictures)) {
+        this.setState({ ready: true })
+      }
+    }
+    if (nextProps.getDanceVideos !== this.props.getDanceVideos) {
+      // Perform some operation
+      this.setState({ videos: nextProps.getDanceVideos });
     }
   }
 
   render() {
-    console.log(this.state.pictures)
     return (
       <Segment textAlign="center" style={styles.segment} vertical>
         <Container fluid style={styles.movie}>
-         
-          {' '}
           <ReactPlayer
             playsinline
-            onReady={() => console.log('onReady')}
             playing
             muted
-            config={{
-              youtube: {
-                playerVars: { showinfo: 1 },
-              },
-            }}
-            url="htt00%"
+            width="100%"
+            url="https://daniellekotch.s3.us-east-2.amazonaws.com/daniellekotch/dance/videos/dance_main.mp4"
             height="40em"
           />
         </Container>
@@ -59,27 +65,36 @@ class Dance extends Component {
         <Container>
           <Header textAlign="left">PREFORMANCES</Header>
           <Grid columns={3}>
-            {VIDEOS.map(({ src }) => (
+            {this.state.videos.map(({ url }) => (
               <Grid.Column>
-                <ReactPlayer
-                  playsinline
-                  centered
-                  url={src}
-                  width="100%"
-                  height="100%"
-                />
+               
+                {(!this.state.ready) ? (<Loader active />) : (
+                  <ReactPlayer
+                    playsinline
+                    controls
+                    centered
+                    url={url}
+                    width="100%"
+                    height="100%"
+                  />
+                )}
+                
               </Grid.Column>
             ))}
           </Grid>
 
+                      
+
           <Header textAlign="left">PHOTOS</Header>
-         
-          <ResponsiveGallery images={this.state.pictures.map(({ path }) => ({
-            src: '/Users/arielkotch/Desktop/danielles-website/assets/dance/photos/thumbnail_IMG_1045.jpg',
-          
-          }))}
-          />
-          
+          {(!this.state.ready) ? (<Loader active />) : (
+
+            <ResponsiveGallery 
+              useLightBox 
+              images={this.state.pictures.map(({ url }) => ({ src: url }))}
+            />
+          )}
+
+           
 
          
         </Container>

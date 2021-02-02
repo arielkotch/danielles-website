@@ -17,6 +17,7 @@ class Acting extends Component {
     this.state = {
       imdb: [],
       actor: {},
+      ready: false
     };
   }
 
@@ -88,15 +89,18 @@ class Acting extends Component {
   
      return (
        <>
-         <Container fluid style={styles.movie}>
+         <Container fluid style={{ backgroundColor: 'black', padding: 0, margin: 0 }}>
+           
            <ReactPlayer
              playsinline
              playing
              muted
-             url="https://vimeo.com/482477619"
+             url="https://daniellekotch.s3.us-east-2.amazonaws.com/daniellekotch/trailors/goodnight_death_trailer.mp4"
              width="100%"
-             height="41em"
+             height="40em"
            />
+
+           
          </Container>
 
          {/* <Container fluid style={styles.container}>

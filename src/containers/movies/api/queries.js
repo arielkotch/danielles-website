@@ -21,6 +21,7 @@ export const GET_TV_SHOWS = gql`
         getTVShows {
             original_name
             popularity
+            id
             character
             poster_path
             overview
@@ -31,7 +32,15 @@ export const GET_TV_SHOWS = gql`
 export const GET_DANCE_PICTURES = gql`
     query {
         getDancePictures {
-            path
+            url
+        }
+    }
+`;
+
+export const GET_DANCE_VIDEOS = gql`
+    query {
+        getDanceVideos {
+            url
         }
     }
 `;
