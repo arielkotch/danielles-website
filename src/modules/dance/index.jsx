@@ -67,7 +67,6 @@ class Dance extends Component {
           <Grid columns={3}>
             {this.state.videos.map(({ url }) => (
               <Grid.Column>
-               
                 {(!this.state.ready) ? (<Loader active />) : (
                   <ReactPlayer
                     playsinline
