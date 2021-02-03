@@ -103,7 +103,7 @@ class Home extends Component {
           <Grid container stackable verticalAlign="middle">
             <Grid.Row>
               <Grid.Column floated="left" width={6}>
-                <Image bordered rounded size="large" src={require('/Users/arielkotch/Desktop/danielles-website/src/images/dance_1.jpg')} />
+                <Image bordered rounded size="large" src="" />
               </Grid.Column>
               <Grid.Column width={8}>
                 <Header as="h3" style={{ color: 'white', fontSize: '2em' }}>
