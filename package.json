@@ -119,9 +119,9 @@
     "workbox-webpack-plugin": "3.6.3"
   },
   "scripts": {
-    "start": "concurrently \"node ./api/index.js\" \"node scripts/start.js\"",
-    "build": "NODE_PATH=src/ node scripts/build.js",
-    "test": "NODE_PATH=src/ node scripts/test.js"
+    "start": "concurrently \"node --max_old_space_size=2560 ./api/index.js\" \"node --max_old_space_size=2560 scripts/start.js\"",
+    "build": "NODE_PATH=src/ node --max_old_space_size=2560 scripts/build.js",
+    "test": "NODE_PATH=src/ node --max_old_space_size=2560 scripts/test.js"
   },
   "browserslist": [
     ">0.2%",
