@@ -73,6 +73,7 @@ class Dance extends Component {
  
 
   render() {
+    console.log(this.state.pictures.map(({ url }) => ({ src: url })))
     return (
       <Segment textAlign="center" style={Styles.segment} vertical>
         <Container fluid style={Styles.movie}>
@@ -105,17 +106,13 @@ class Dance extends Component {
                 <Header as="h3" style={{ color: 'white', fontSize: '2em' }}>
                   1st Place Teen Solo
                 </Header>
+                <Header as="h3" style={{ color: 'white', fontSize: '1.5em' }}>
+                  2015 National Grand Finale
+                </Header>
                 <p style={{ fontSize: '1.33em' }}>
                   Im There Too - Danielle Kotch
                 </p>
-                <Header as="h3" style={{ color: 'white', fontSize: '2em' }}>
-                  We Make Bananas That Can Dance
-                </Header>
-                <p style={{ fontSize: '1.33em' }}>
-                  Yes thats
-                  right, you thought it was the stuff of dreams, but even bananas can be
-                  bioengineered.
-                </p>
+              
               </Grid.Column>
              
             </Grid.Row>

@@ -169,10 +169,7 @@ class Acting extends Component {
            content={[
              {
                header: 'Reel.',
-               paragraph: `We can give your company superpowers to do 
-             things that they never thought possible.
-             Let us delight your customers and
-             empower your needs... through pure data analytics.` 
+               paragraph: 'I fell in love with acting, which led me to a tv, film, and voiceover career. It all started with an interview with Murray on Sesame Street, which led me to movies such as Sinister, and Phoebe in Wonderland, to guest-starring in tv shows such as Person of Interest and Made in Jersey.'
              }
            ]}
            videoUrl="https://daniellekotch.s3.us-east-2.amazonaws.com/daniellekotch/trailors/danielle_reel.mp4"

@@ -97,16 +97,11 @@ class Home extends Component {
           content={
             [{
               header: 'Dance.',
-              paragraph: `We can give your company superpowers to do 
-              things that they never thought possible.
-              Let us delight your customers and
-              empower your needs... through pure data analytics.` 
+              paragraph: 'From dancing with Robin Thicke on his CBS Christmas special, to performing in an off-broadway show, and dancing on a national commercial for Macy’s. I then went on to receive awards at dance competitions both nationally and internationally' 
             },
             {
-              header: 'Awards.',
-              paragraph: `Yes thats
-              right, you thought it was the stuff of dreams, but even bananas can be
-              bioengineered.` 
+              header: 'Worked With.',
+              paragraph: 'Travis Wall, Mandy Moore, Stacey Tookey, and Talia Favia'
             }]
           }
         />
