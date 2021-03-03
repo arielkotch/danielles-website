@@ -3,7 +3,6 @@ const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql');
 const axios = require('axios');
-const fs = require('fs');
 const AWS = require('aws-sdk');
 
 const app = express();

@@ -3,11 +3,13 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import {
-  Card, Container,Button,Segment,Grid,Header
+  Card, Container,Button,Header
 } from 'semantic-ui-react';
 import ReactPlayer from 'react-player';
 import { isEmpty } from 'lodash';
-import ResponsiveGallery from 'react-responsive-gallery'
+import ResponsiveGallery from 'react-responsive-gallery';
+import VideoBox from '../../molecules/Content/Video/index';
+
 import Movies from '../../molecules/Movies/moviesContainer';
 // import Quote from '../../atoms/Quote/index';
 import { styles } from './styles';
@@ -161,33 +163,21 @@ class Acting extends Component {
              ))}
            </Card.Group>
          </Container>
-         <Segment inverted style={{ marginBottom: '2em', marginTop: '2em', padding: '8em 0em' }} vertical>
-           <Grid container stackable verticalAlign="middle">
-             <Grid.Row>
-               <Grid.Column width={6}>
-                 <Header as="h3" style={{ color: 'white',fontSize: '4em' }}>
-                   Reel.
-                 </Header>
-                 <p style={{ fontSize: '1.33em' }}>
-                   We can give your company superpowers to do 
-                   things that they never thought possible.
-                   Let us delight your customers and
-                   empower your needs... through pure data analytics.
-                 </p>
-               </Grid.Column>
-               <Grid.Column floated="right" width={8}>
-                 <ReactPlayer
-                   playsinline
-                   muted
-                   playing={this.state.scrollPos > 0.50 && this.state.scrollPos < 0.80}
-                   controls
-                   url="https://daniellekotch.s3.us-east-2.amazonaws.com/daniellekotch/trailors/danielle_reel.mp4"
-                   width="100%"
-                 />
-               </Grid.Column>
-             </Grid.Row>
-           </Grid>
-         </Segment>
+
+         <VideoBox
+           inverted
+           content={[
+             {
+               header: 'Reel.',
+               paragraph: `We can give your company superpowers to do 
+             things that they never thought possible.
+             Let us delight your customers and
+             empower your needs... through pure data analytics.` 
+             }
+           ]}
+           videoUrl="https://daniellekotch.s3.us-east-2.amazonaws.com/daniellekotch/trailors/danielle_reel.mp4"
+           floated="right"
+         />
          <Container className="container">
 
            <Header style={{ fontSize: '4em', marginTop: '1em', marginBottom: '1em' }} textAlign="left">Gallery.</Header>

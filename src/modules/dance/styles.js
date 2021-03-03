@@ -1,6 +1,6 @@
 import { colors } from '../../colors';
 
-export const styles = {
+export const Styles = {
   segment: {
     minHeight: 700,
     backgroundColor: colors.backgroundColor,
@@ -17,3 +17,5 @@ export const styles = {
     backgroundColor: '#000000',
   },
 };
+
+export default Styles;
