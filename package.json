@@ -24,7 +24,7 @@
     "concurrently": "^5.2.0",
     "cors": "^2.8.5",
     "css-loader": "1.0.0",
-    "dotenv": "6.0.0",
+    "dotenv": "^6.0.0",
     "dotenv-expand": "4.2.0",
     "eslint": "^7.16.0",
     "eslint-config-airbnb": "^18.2.0",

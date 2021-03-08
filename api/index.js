@@ -4,12 +4,15 @@ const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql');
 const axios = require('axios');
 const AWS = require('aws-sdk');
-
+console.log(require('../config'))
 const app = express();
-
 const DANIELLE_ID = '1179260';
-AWS.config.update({ accessKeyId: process.env.aws_access_key_id
-  , secretAccessKey: process.env.aws_secret_access_key
+let {aws_access_key_id, aws_secret_access_key,API_KEY,AWS_PREFIX,PORT}=require('../config')
+console.log({
+  aws_access_key_id, aws_secret_access_key,API_KEY,AWS_PREFIX,PORT
+})
+AWS.config.update({ accessKeyId: aws_access_key_id
+  , secretAccessKey: aws_secret_access_key
   , region: 'us-east-2' });
 const s3 = new AWS.S3();
 
@@ -25,12 +28,12 @@ const getAWSObjects = ({ key }) => new Promise((resolve, reject) => {
   });
 })
 
-const tmdb = `https://api.themoviedb.org/3/person/${DANIELLE_ID}/movie_credits?api_key=${process.env.API_KEY}&language=en-US`;
-const actorDetails = `https://api.themoviedb.org/3/person/${DANIELLE_ID}?api_key=${process.env.API_KEY}&language=en-US`;
+const tmdb = `https://api.themoviedb.org/3/person/${DANIELLE_ID}/movie_credits?api_key=${API_KEY}&language=en-US`;
+const actorDetails = `https://api.themoviedb.org/3/person/${DANIELLE_ID}?api_key=${API_KEY}&language=en-US`;
 const root = {
   getMovie: async ({ id }) => {
     const { data } = await axios.get(
-      ` https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}&language=en-US`,
+      ` https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`,
     );
     return data;
   },
@@ -39,7 +42,7 @@ const root = {
     return data.Contents.filter(({ Size }) => Size > 0).map(({ LastModified,Key }) => ({
       lastModified: LastModified,
       key: Key,
-      url: process.env.AWS_PREFIX + Key
+      url: AWS_PREFIX + Key
     }))
   },
   getActingPictures: async () => {
@@ -47,7 +50,7 @@ const root = {
     return data.Contents.filter(({ Size }) => Size > 0).map(({ LastModified,Key }) => ({
       lastModified: LastModified,
       key: Key,
-      url: process.env.AWS_PREFIX + Key
+      url: AWS_PREFIX + Key
     }))
   },
   getDanceVideos: async () => {
@@ -55,12 +58,12 @@ const root = {
     return data.Contents.filter(({ Size }) => Size > 0).map(({ LastModified,Key }) => ({
       lastModified: LastModified,
       key: Key,
-      url: process.env.AWS_PREFIX + Key
+      url: AWS_PREFIX + Key
     }))
   },
   getVideo: async ({ id }) => {
     const { data: { results } } = await axios.get(
-      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.API_KEY}&language=en-US`,
+      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`,
     );
     return results;
   },
@@ -69,7 +72,7 @@ const root = {
       data: { cast },
     } = await axios.get(tmdb);
     const res = await axios.get(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.API_KEY}&language=en-US`,
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`,
     );
     console.log(res.data.genres)
 
@@ -80,7 +83,7 @@ const root = {
     const {
       data: { cast },
     } = await axios.get(
-      `https://api.themoviedb.org/3/person/${DANIELLE_ID}/tv_credits?api_key=${process.env.API_KEY}&language=en-US`,
+      `https://api.themoviedb.org/3/person/${DANIELLE_ID}/tv_credits?api_key=${API_KEY}&language=en-US`,
     );
     return cast;
   },
@@ -89,7 +92,7 @@ const root = {
     const {
       data: { profiles },
     } = await axios.get(
-      `https://api.themoviedb.org/3/person/${DANIELLE_ID}/images?api_key=${process.env.API_KEY}`,
+      `https://api.themoviedb.org/3/person/${DANIELLE_ID}/images?api_key=${API_KEY}`,
     );
     return {
       ...data,
@@ -170,4 +173,4 @@ app.use(
   }),
 );
 
-app.listen(process.env.PORT || 4000, () => console.log('Now browse to localhost:4000/graphql'));
+app.listen(PORT || 4000, () => console.log('Now browse to localhost:4000/graphql'));
