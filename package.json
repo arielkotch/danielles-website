@@ -24,7 +24,7 @@
     "concurrently": "^5.2.0",
     "cors": "^2.8.5",
     "css-loader": "1.0.0",
-    "dotenv": "^6.0.0",
+    "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
     "eslint": "^7.16.0",
     "eslint-config-airbnb": "^18.2.0",
@@ -121,7 +121,7 @@
   "scripts": {
     "start": "concurrently \"node ./api/index.js\" \"node scripts/start.js\"",
     "build": "NODE_PATH=src/ node scripts/build.js",
-    "test": "NODE_PATH=src/ node scripts/test.js"
+    "test": "NODE_PATH=src/ node  scripts/test.js"
   },
   "browserslist": [
     ">0.2%",

@@ -171,9 +171,4 @@ app.use(
   }),
 );
 
-var distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
-
-
-
-app.listen(process.env.PORT || 4000, () => console.log('Now browse to localhost:4000/graphql'));
+app.listen(4000, () => console.log('Now browse to localhost:4000/graphql'));
