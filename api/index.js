@@ -11,7 +11,9 @@ const API_KEY = 'd0bf8908709bcc882a8e69d21c40685b';
 
 const DANIELLE_ID = '1179260';
 const AWS_PREFIX = 'https://daniellekotch.s3.us-east-2.amazonaws.com/'
-AWS.config.update({ accessKeyId: 'AKIAJWM3URLKE3KZTQEQ', secretAccessKey: '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', region: 'us-east-2' });
+AWS.config.update({ accessKeyId: process.env.aws_access_key_id
+  , secretAccessKey: process.env.aws_secret_access_key
+  , region: 'us-east-2' });
 const s3 = new AWS.S3();
 
 
