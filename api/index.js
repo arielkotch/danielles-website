@@ -4,10 +4,15 @@ const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql');
 const axios = require('axios');
 const AWS = require('aws-sdk');
+console.log(require('../config'))
 const app = express();
 const DANIELLE_ID = '1179260';
 const dotenv = require('dotenv');
 dotenv.config();
+
+AWS.config.update({ accessKeyId: process.env.aws_access_key_id
+  , secretAccessKey: process.env.aws_secret_access_key
+  , region: 'us-east-2' });
 const s3 = new AWS.S3();
 
 
