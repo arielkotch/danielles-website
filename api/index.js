@@ -4,7 +4,6 @@ const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql');
 const axios = require('axios');
 const AWS = require('aws-sdk');
-console.log(require('../config'))
 const app = express();
 const DANIELLE_ID = '1179260';
 const dotenv = require('dotenv');
