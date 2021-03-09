@@ -115,7 +115,8 @@ class Acting extends Component {
 
    render() {
      const { media } = this.state;
-  
+     console.log(media);
+
      return (
        <>
          <Container fluid style={{ backgroundColor: 'black', padding: 0, margin: 0 }}>

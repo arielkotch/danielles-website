@@ -123,8 +123,6 @@
   },
   "scripts": {
     "start": "concurrently \"node ./api/index.js\" \"node scripts/start.js\"",
-    "api":"node ./api/index.js",
-    "run":"node scripts/start.js",
     "build": "NODE_PATH=src/ node scripts/build.js",
     "test": "NODE_PATH=src/ node  scripts/test.js"
   },

@@ -13,8 +13,6 @@ AWS.config.update({ accessKeyId: process.env.aws_access_key_id
   , secretAccessKey: process.env.aws_secret_access_key
   , region: 'us-east-2' });
 const s3 = new AWS.S3();
-const port = process.env.PORT || 4000;
-
 
 const getAWSObjects = ({ key }) => new Promise((resolve, reject) => {
   const params = { Bucket: 'daniellekotch', Prefix: key, Delimiter: '/' };
@@ -171,5 +169,5 @@ app.use(
     graphiql: true,
   }),
 );
-
-app.listen({port:process.env.PORT||4000}, () => console.log('Now browse to localhost:4000/graphql'));
+console.log(process.env)
+app.listen(4000, () => console.log(`Now browse to localhost:4000/graphql`));

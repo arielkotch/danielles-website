@@ -6,10 +6,8 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 import AppRouter from './modules/router/router';
 
-console.log(process.env.PORT,'process.env.PORT app');
-
 const client = new ApolloClient({
-  uri: 'https://danielles-website.herokuapp.com/4000/graphql',
+  uri: 'http://danielles-website.herokuapp.com:4000/graphql',
   cache: new InMemoryCache(),
 });
 
