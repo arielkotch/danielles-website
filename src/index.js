@@ -6,7 +6,7 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 import AppRouter from './modules/router/router';
 
-console.log( process.env.PORT,'process.env.PORT app');
+console.log(process.env.PORT,'process.env.PORT app');
 
 const client = new ApolloClient({
   uri: `http://localhost:${process.env.PORT || 4000}/graphql`,
