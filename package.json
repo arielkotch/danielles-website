@@ -1,6 +1,9 @@
 {
   "name": "danielle-website",
   "version": "0.1.0",
+  "engines": {
+    "node": "14.16.0"
+  },
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.0.2",
