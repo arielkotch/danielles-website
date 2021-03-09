@@ -7,7 +7,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import AppRouter from './modules/router/router';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: `http://localhost:${process.env.PORT || 4000}/graphql`,
   cache: new InMemoryCache(),
 });
 
